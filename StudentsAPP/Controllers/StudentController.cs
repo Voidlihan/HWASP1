@@ -8,7 +8,6 @@ namespace StudentAPP.Controllers
     public class StudentController : Controller
     {
         public List<Student> Students { get; set; }
-
         public StudentController()
         {
             Students = new List<Student>()
@@ -26,7 +25,6 @@ namespace StudentAPP.Controllers
         public ActionResult Edit(int id)
         {
             var student = Students.FirstOrDefault(x => x.Id == id);
-
             return View(student);
         }
 
@@ -49,14 +47,12 @@ namespace StudentAPP.Controllers
             catch
             {
                 return HttpNotFound();
-
             }
         }
 
         public ActionResult Delete(int id)
         {
             var student = Students.FirstOrDefault(x => x.Id == id);
-
             return View(student);
         }
 
@@ -68,14 +64,12 @@ namespace StudentAPP.Controllers
                 Students.Remove(std);
                 return RedirectToAction("Index");
             }
-
             return HttpNotFound();
         }
 
         public ActionResult Details(int id)
         {
             var student = Students.FirstOrDefault(x => x.Id == id);
-
             return View(student);
         }
 
@@ -90,10 +84,10 @@ namespace StudentAPP.Controllers
             try
             {
                 if (ModelState.IsValid)
+                {
                     Students.Add(std);
-
+                }
                 ViewBag.Count = Students.Count;
-
                 return RedirectToAction("Index");
             }
             catch
